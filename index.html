@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="GEM: Generating LiDAR World Model via Deformable Mamba">
+  <meta name="keywords" content="GEM, LiDAR, World Model, Mamba, Autonomous Driving, CVPR 2026">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GEM: Generating LiDAR World Model via Deformable Mamba</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+
+<!-- Title & Authors -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            <span class="gem-title">GEM</span>: Generating LiDAR World Model via Deformable Mamba
+          </h1>
+          <div class="is-size-5 publication-venue">CVPR 2026</div>
+
+          <!-- Authors -->
+          <div class="is-size-5 publication-authors">
+            <div class="author-row">
+              <span class="author-block">Yang Wu<sup>1</sup>,</span>
+              <span class="author-block">Zhaojiang Liu<sup>3</sup>,</span>
+              <span class="author-block">Qiang Meng<sup>&dagger;</sup>,</span>
+              <span class="author-block">Youquan Liu<sup>4</sup>,</span>
+            </div>
+            <div class="author-row">
+              <span class="author-block">Renliang Weng<sup>5</sup>,</span>
+              <span class="author-block">Jianjun Qian<sup>1</sup>,</span>
+              <span class="author-block">Jian Yang<sup>1,2</sup>,</span>
+              <span class="author-block">Jin Xie<sup>2*</sup></span>
+            </div>
+          </div>
+
+          <!-- Affiliations -->
+          <div class="is-size-6 publication-authors">
+            <div class="author-row">
+              <span class="author-block"><sup>1</sup>PCA Lab, Nanjing University of Science and Technology</span>
+              <span class="author-block"><sup>2</sup>Nanjing University</span>
+            </div>
+            <div class="author-row">
+              <span class="author-block"><sup>3</sup>Shanghai Jiao Tong University</span>
+              <span class="author-block"><sup>4</sup>Fudan University</span>
+              <span class="author-block"><sup>5</sup>Nanyang Technological University</span>
+            </div>
+          </div>
+          <div class="is-size-7 publication-authors" style="margin-top: 0.3rem;">
+            <span><sup>&dagger;</sup>Independent researcher. <sup>*</sup>Corresponding author.</span>
+          </div>
+
+          <!-- Links -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="far fa-file-pdf"></i></span>
+                  <span>Supplementary</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/wuyang98/GEM" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Abstract -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            World models, which simulate environmental dynamics and generate sensor observations, are gaining increasing attention in autonomous driving.
+            However, progress in LiDAR-based world models has lagged behind those built on camera videos or occupancy data, primarily due to two core challenges: the inherent disorder of LiDAR point clouds and the difficulty of distinguishing dynamic objects from static structures.
+          </p>
+          <p>
+            To address these issues, we propose <strong>GEM</strong>: a <strong>G</strong>enerative LiDAR world model that leverages d<strong>E</strong>formable <strong>M</strong>amba architecture, significantly improving fidelity and imaginative capability.
+            Specifically, leveraging the structural similarity between sequential laser scanning and Mamba's processing mechanism, we first tokenize LiDAR sweeps into compact representations via a custom <em>LiDAR scene tokenizer</em>.
+            After unsupervised disentanglement of tokenized features via a <em>dynamic-static separator</em>, a <em>tri-path deformable Mamba</em> is introduced to perform selective scanning and adaptive gating fusion over the disentangled features, leading to enhanced spatial-temporal understanding of the world evolution.
+          </p>
+          <p>
+            Optionally, a planner and a BEV layout controller can be integrated to explore the model's capability for autonomous rollout and its potential to generate "what-if" scenarios.
+            Extensive experiments show that GEM achieves state-of-the-art performances across diverse benchmarks and evaluation settings, demonstrating its superiority and effectiveness.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Method -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method Overview</h2>
+        <div class="content has-text-justified">
+          <p>
+            GEM consists of three key components: (1) a <strong>LiDAR Scene Tokenizer</strong> that converts raw point clouds into structured token representations;
+            (2) a <strong>Dynamic-Static Separator</strong> that disentangles dynamic objects from static backgrounds in an unsupervised manner;
+            and (3) a <strong>Tri-path Deformable Mamba</strong> that performs selective scanning with adaptive gating fusion for spatial-temporal world modeling.
+          </p>
+        </div>
+        <div class="pipeline-image">
+          <img src="static/images/flowchart.png" alt="GEM Pipeline" width="100%">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Video Demo -->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Video Demo</h2>
+
+      <!-- 32-line LiDAR Reconstruction (nuScenes) -->
+      <div class="video-group">
+        <h3 class="title is-4 has-text-centered">32-line LiDAR Reconstruction (nuScenes)</h3>
+        <div class="columns is-centered">
+          <div class="column is-6">
+            <div class="publication-video">
+              <video autoplay controls muted loop playsinline width="100%">
+                <source src="static/videos/samples_nuscenes_1_reconstruction.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column is-6">
+            <div class="publication-video">
+              <video autoplay controls muted loop playsinline width="100%">
+                <source src="static/videos/samples_nuscenes_2_reconstruction.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 64-line LiDAR Reconstruction (KITTI) -->
+      <div class="video-group">
+        <h3 class="title is-4 has-text-centered">64-line LiDAR Reconstruction (KITTI)</h3>
+        <div class="columns is-centered">
+          <div class="column is-6">
+            <div class="publication-video">
+              <video autoplay controls muted loop playsinline width="100%">
+                <source src="static/videos/samples_kitti_1_reconstruction.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column is-6">
+            <div class="publication-video">
+              <video autoplay controls muted loop playsinline width="100%">
+                <source src="static/videos/samples_kitti_2_reconstruction.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 64-line LiDAR 30s-level Generation -->
+      <div class="video-group">
+        <h3 class="title is-4 has-text-centered">64-line LiDAR 30s-level High-quality Generation</h3>
+        <div class="columns is-centered">
+          <div class="column is-10">
+            <div class="publication-video">
+              <video autoplay controls muted loop playsinline width="100%">
+                <source src="static/videos/samples_kitti_30s_level.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 64-line LiDAR Minute-level Generation -->
+      <div class="video-group">
+        <h3 class="title is-4 has-text-centered">64-line LiDAR Minute-level Generation</h3>
+        <div class="columns is-centered">
+          <div class="column is-10">
+            <div class="publication-video">
+              <video autoplay controls muted loop playsinline width="100%">
+                <source src="static/videos/samples_kitti_minute_level.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BibTeX -->
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">BibTeX</h2>
+    <pre><code>@inproceedings{wu2026gem,
+  title={GEM: Generating LiDAR World Model via Deformable Mamba},
+  author={Wu, Yang and Liu, Zhaojiang and Meng, Qiang and Liu, Youquan and Weng, Renliang and Qian, Jianjun and Yang, Jian and Xie, Jin},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2026}
+}</code></pre>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        This website template is borrowed from <a href="https://nerfies.github.io/">Nerfies</a>.
+      </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

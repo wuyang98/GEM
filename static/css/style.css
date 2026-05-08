@@ -1,0 +1,114 @@
+/* GEM Project Page Styles */
+
+body {
+  font-family: 'Noto Sans', 'Google Sans', sans-serif;
+}
+
+.gem-title {
+  color: #4a90d9;
+  font-weight: 700;
+}
+
+.publication-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.publication-venue {
+  color: #363636;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.publication-authors {
+  margin-bottom: 0.5rem;
+}
+
+.publication-authors .author-block {
+  display: inline-block;
+  margin-right: 0.2rem;
+}
+
+.publication-authors .author-row {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.publication-authors a {
+  color: #4a90d9;
+}
+
+.publication-authors a:hover {
+  text-decoration: underline;
+}
+
+.publication-links {
+  margin-top: 1.2rem;
+}
+
+.publication-links .link-block {
+  margin: 0 0.3rem;
+}
+
+.publication-links .button {
+  margin-bottom: 0.5rem;
+}
+
+.publication-video {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.publication-video video {
+  display: block;
+}
+
+.pipeline-image {
+  margin-top: 1.5rem;
+}
+
+.pipeline-image img {
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.video-group {
+  margin-bottom: 2.5rem;
+}
+
+.video-group:last-child {
+  margin-bottom: 0;
+}
+
+.video-group .title.is-4 {
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+#bibtex pre {
+  background-color: #f5f5f5;
+  padding: 1.2rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  overflow-x: auto;
+}
+
+.footer {
+  padding: 2rem 1.5rem;
+}
+
+.section {
+  padding: 3rem 1.5rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .publication-title {
+    font-size: 1.8rem;
+  }
+
+  .publication-authors .author-block {
+    display: inline;
+  }
+}
