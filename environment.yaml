@@ -1,0 +1,32 @@
+name: gem
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    - torch==2.1.0
+    - torchvision==0.16.0
+    - torchaudio==2.1.0
+    - --extra-index-url https://download.pytorch.org/whl/cu121
+    - mamba-ssm==1.2.0.post1
+    - accelerate==0.22.0
+    - ema-pytorch==0.7.7
+    - einops==0.6.1
+    - simple_parsing==0.1.5
+    - rich==13.5.1
+    - tqdm==4.66.1
+    - numpy==1.24.4
+    - scipy==1.11.1
+    - matplotlib==3.5.3
+    - pillow==11.2.1
+    - torchvision==0.16.0
+    - imageio==2.34.0
+    - imageio-ffmpeg==0.4.9
+    - opencv-python==4.11.0.86
+    - nuscenes-devkit==1.1.11
+    - pytorch-msssim==1.0.0
