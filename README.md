@@ -54,7 +54,7 @@ torchrun --nproc_per_node=<NUM_GPUS> vae/vae_v17_kitti.py
 
 Checkpoints are saved to `vae/checkpoints/` and visualizations to `vae/fig/`.
 
-Alternatively, download the pretrained VAE checkpoint: [vae_epoch_80.pth](URL_TO_BE_ADDED)
+Alternatively, download the pretrained VAE checkpoint: [vae_epoch_80.pth](https://huggingface.co/fengchen7/gem/blob/main/vae_epoch_80.pth)
 
 ---
 
@@ -132,7 +132,7 @@ accelerate launch train.py
 
 Checkpoints and TensorBoard logs are saved to `logs/diffusion/kitti/spherical-1024/<timestamp>/`.
 
-Alternatively, download the pretrained diffusion checkpoint: [diffusion_0001200000.pth](URL_TO_BE_ADDED)
+Alternatively, download the pretrained diffusion checkpoint: [diffusion_0001200000.pth](https://huggingface.co/fengchen7/gem/blob/main/diffusion_0001200000.pth)
 
 ---
 
