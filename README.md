@@ -222,7 +222,7 @@ We sincerely thank the authors for making their code publicly available.
 
 ## Citation
 
-If you find it helpful, please feel free to cite our work involved in this project.
+If you find it helpful, we would appreciate it if you could cite our work involved in this project.
 
 ```bibtex
 @inproceedings{wu2026gem,
