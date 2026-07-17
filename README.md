@@ -113,7 +113,7 @@ After both steps, the processed dataset directory should look like:
 ```
 kitti_odometry_vae_train/
 └── sequences/
-    ├── 08/
+    ├── 01/
     │   ├── 000000.pt
     │   ├── 000000_egopose.pt
     │   ├── 000001.pt
@@ -165,7 +165,7 @@ python generate_and_save.py \
     --output_dir ./results \
     --num_samples 6701 \
     --sampling_steps 256 \
-    --seed 88
+    --seed xx
 ```
 
 Generated point clouds are saved as `.bin` files under `--output_dir` with the structure:
