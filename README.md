@@ -2,7 +2,7 @@
 
 **project page**: [https://wuyang98.github.io/GEM/](https://wuyang98.github.io/GEM/)
 
-![64 line reconstruction and generation](https://raw.githubusercontent.com/wuyang98/gem/main/visual/page56_1.gif)
+![64 line reconstruction and generation](https://raw.githubusercontent.com/wuyang98/GEM/main/visual/page56_1.gif)
 
 ## 1. Environment Setup
 
