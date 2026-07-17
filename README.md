@@ -5,15 +5,15 @@
 <table>
   <tr>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/wuyang98/GEM/main/visual/page56_1.gif" alt="64 line reconstruction and generation" width="100%"/><br/>
-      <b>Frame 56</b>
+      <img src="https://raw.githubusercontent.com/wuyang98/GEM/main/visual/page56_1.gif" alt="64 line reconstruction and generation" width="100%"/>
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/wuyang98/GEM/main/visual/page57_2.gif" alt="64 line reconstruction and generation" width="100%"/><br/>
-      <b>Frame 57</b>
+      <img src="https://raw.githubusercontent.com/wuyang98/GEM/main/visual/page57_2.gif" alt="64 line reconstruction and generation" width="100%"/>
     </td>
   </tr>
 </table>
+
+<p align="center">64 line reconstruction and generation</p>
 
 ## 1. Environment Setup
 
