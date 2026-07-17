@@ -13,7 +13,7 @@
   </tr>
 </table>
 
-<p align="center">64 line reconstruction and generation</p>
+<p align="center">64 line reconstruction and generation. The first row is the ground truth, and the second row is the prediction.</p>
 
 ## 1. Environment Setup
 
