@@ -1,8 +1,12 @@
-# GEM: Generating LiDAR World Model via Deformable Mamba
+<div align="center">
+
+## GEM: Generating LiDAR World Model via Deformable Mamba
 
 [![Project Page](https://img.shields.io/badge/Project-Page-green)](https://wuyang98.github.io/GEM/)
 [![arXiv](https://img.shields.io/badge/arXiv-2606.05774-b31b1b.svg)](https://arxiv.org/abs/2605.07326)
 [![Hugging Face](https://img.shields.io/badge/Hugging%20Face-ckpt-yellow)](https://huggingface.co/fengchen7/gem/tree/main)
+
+</div>
 
 <table>
   <tr>
