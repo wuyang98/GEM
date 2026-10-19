@@ -160,7 +160,7 @@ Alternatively, download the pretrained diffusion checkpoint: [diffusion_00012000
 Edit the dataset path in `generate_and_save.py`:
 
 ```python
-root_dirs = ["path/dataset_processed/kitti_odometry_vae_train"]
+root_dirs = ["path/dataset_processed/kitti_odometry_vae_test"]
 ```
 
 Then run:
