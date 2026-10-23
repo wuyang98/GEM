@@ -28,7 +28,9 @@ conda env create -f environment.yaml
 conda activate gem
 ```
 
-> **Note:** `mamba-ssm` may require CUDA 12.1 and a compatible GPU. Make sure your CUDA driver version matches before installing.
+> **Note:** `mamba-ssm` may require CUDA 12.1 and a compatible GPU. Make sure your CUDA driver version matches before installing. During testing, chamferdist version 1.0.3 is used, and its contents should be replaced with cd.py.
+
+
 
 ---
 
